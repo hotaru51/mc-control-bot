@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
