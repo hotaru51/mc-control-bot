@@ -55,7 +55,7 @@ module MinecraftController
     # Minecraftサーバの起動状態を確認する
     # @return [Boolean] 起動状態
     def self.active?
-      out, sts = Open3.capture2('systemctl', 'is-active', 'minecraft')
+      out, _, sts = Open3.capture3('systemctl', 'is-active', 'minecraft')
 
       out.chomp == 'active' && sts.success?
     end
