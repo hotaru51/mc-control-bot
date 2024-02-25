@@ -43,9 +43,9 @@ end
 # @type event [Discordrb::Commands::CommandEvent]
 bot.command :状態 do |event|
   if MinecraftController::Service.active?
-    '上がってるよー'
+    '上がってるよぉ～'
   else
-    '止まってるかコケてるよー'
+    '止まってるかコケてるかも？'
   end
 end
 
