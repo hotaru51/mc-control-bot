@@ -1,0 +1,14 @@
+[Unit]
+Description=Discord bot for Minecraft server control.
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/mc-control-bot
+PIDFile=/opt/mc-control-bot/tmp/pid
+ExecStart=/usr/bin/bundle exec ruby app.rb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
