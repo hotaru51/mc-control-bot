@@ -14,12 +14,16 @@ bot = Discordrb::Commands::CommandBot.new(token: TOKEN, channels: [CHANNLE_ID], 
 
 # @type event [Discordrb::Commands::CommandEvent]
 bot.command :起動 do |event|
-  <<~MESSAGE
-    テストだよ～ん
+  event.send_message 'あいよぉ～'
+  # @type out [String]
+  # @type sts [Process::Status]
+  err_message, sts = MinecraftController::Service.start
 
-    channel: #{event.channel.id}
-    user: #{event.author.id}
-  MESSAGE
+  if sts.success?
+    '起動したよーん'
+  else
+    err_message
+  end
 end
 
 at_exit { bot.stop }
