@@ -10,7 +10,15 @@ Dotenv.load
 TOKEN = ENV['MC_CTL_BOT_TOKEN']
 CHANNLE_ID = ENV['MC_CTL_BOT_CHANNEL_ID']
 
-bot = Discordrb::Commands::CommandBot.new(token: TOKEN, channels: [CHANNLE_ID], prefix: 'うい、', help_command: false)
+bot_attributes = {
+  token: TOKEN,
+  channels: [CHANNLE_ID],
+  prefix: 'うい、',
+  help_command: false,
+  ignore_bots: true
+}
+
+bot = Discordrb::Commands::CommandBot.new(**bot_attributes)
 
 # @type event [Discordrb::Commands::CommandEvent]
 bot.command :起動 do |event|
