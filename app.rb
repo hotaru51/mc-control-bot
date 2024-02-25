@@ -10,6 +10,12 @@ Dotenv.load
 TOKEN = ENV['MC_CTL_BOT_TOKEN']
 CHANNLE_ID = ENV['MC_CTL_BOT_CHANNEL_ID']
 
+TMP_DIR = "#{__dir__}/tmp".freeze
+PID_FILE = "#{TMP_DIR}/pid".freeze
+File.open(PID_FILE, 'w') do |f|
+  f.write($PID)
+end
+
 bot_attributes = {
   token: TOKEN,
   channels: [CHANNLE_ID],
@@ -57,5 +63,9 @@ bot.command :状態 do |event|
   end
 end
 
-at_exit { bot.stop }
+at_exit do
+  File.delete(PID_FILE) if File.exist?(PID_FILE)
+  bot.stop
+end
+
 bot.run
