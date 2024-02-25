@@ -30,15 +30,11 @@ module MinecraftController
       <<~MESSAGE
         あれ…？ エラーっぽい…？
 
-        ## stdout
-
         ```
+        # stdtout
         #{out}
-        ```
 
-        ## stderr
-
-        ```
+        # stderr
         #{err}
         ```
       MESSAGE
