@@ -40,5 +40,14 @@ bot.command :停止 do |event|
   end
 end
 
+# @type event [Discordrb::Commands::CommandEvent]
+bot.command :状態 do |event|
+  if MinecraftController::Service.active?
+    '上がってるよー'
+  else
+    '止まってるかコケてるよー'
+  end
+end
+
 at_exit { bot.stop }
 bot.run
