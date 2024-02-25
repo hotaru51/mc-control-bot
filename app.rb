@@ -26,5 +26,19 @@ bot.command :起動 do |event|
   end
 end
 
+# @type event [Discordrb::Commands::CommandEvent]
+bot.command :停止 do |event|
+  event.send_message 'あいよぉ～'
+  # @type out [String]
+  # @type sts [Process::Status]
+  err_message, sts = MinecraftController::Service.stop
+
+  if sts.success?
+    '止めたよーん'
+  else
+    err_message
+  end
+end
+
 at_exit { bot.stop }
 bot.run
